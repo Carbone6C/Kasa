@@ -1,0 +1,38 @@
+.header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+        max-height: 68px;
+    }
+
+    .navigation {
+        display: flex;
+        list-style: none;
+    }
+
+    .nav-link {
+        text-decoration: none;
+        margin-left: 20px;
+        color: #000000;
+        font-size: 24px;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        .nav-link {
+            text-transform: uppercase;
+            color: #000000;
+            font-size: 12px;
+        }
+
+        .logo {
+            max-height: 33.09px;
+        }
+    }
+}
