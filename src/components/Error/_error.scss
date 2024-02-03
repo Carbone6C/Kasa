@@ -26,11 +26,15 @@
             margin: 70px 0px;
             font-size: 18px;
             text-decoration: none;
-            @media screen and (max-width: 700px) {
+        }
+    }
+    @media screen and (max-width: 700px) {
+        &__404 {
+            &-link {
                 font-size: 14px;
-            }
-            &:hover {
+                &:hover {
                 text-decoration: underline;
+                }
             }
         }
     }

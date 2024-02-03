@@ -3,17 +3,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 40px;
 
-    .logo {
+    &__logo {
         max-height: 68px;
     }
 
-    .navigation {
+    &__navigation {
         display: flex;
         list-style: none;
     }
 
-    .nav-link {
+    &__nav-link {
         text-decoration: none;
         margin-left: 20px;
         color: #000000;
@@ -25,13 +26,14 @@
     }
 
     @media screen and (max-width: 900px) {
-        .nav-link {
+        margin: 0 10px;
+        &__nav-link {
             text-transform: uppercase;
             color: #000000;
             font-size: 12px;
         }
 
-        .logo {
+        &__logo {
             max-height: 33.09px;
         }
     }

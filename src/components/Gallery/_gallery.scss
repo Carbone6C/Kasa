@@ -1,0 +1,28 @@
+.gallery {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+    background: #F6F6F6;
+    border-radius: 25px;
+    padding: 50px;
+    margin: 30px 40px;
+
+    &__link {
+        display: block;
+        border-radius: 25px;
+        aspect-ratio: 1;
+        width: calc((100% - 40px) / 3);
+        background-color: orange;
+    }
+
+    @media screen and (max-width: 760px) {
+        margin: 30px 10px;
+        background: white;
+        padding: 0;
+        &__link {
+            width: 100%;
+        }
+    }
+}

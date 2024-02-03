@@ -1,7 +1,9 @@
+import Banner from '../../components/Banner/Banner'
+
 function Apartment() {
   return (
     <div>
-      <h1> Chez vous, partout et ailleurs</h1>
+      <Banner />
     </div>
   )
 }
