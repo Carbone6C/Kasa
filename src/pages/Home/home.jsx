@@ -4,7 +4,7 @@ import Layout from '../../components/Layout/layout'
 function Home() {
   return (
     <div>
-      <Layout />
+      <Layout text="Chez vous, partout et ailleurs" />
       <Gallery />
     </div>
   )
