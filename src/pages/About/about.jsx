@@ -29,6 +29,7 @@ function About() {
           title={apropos.title}
           text={apropos.text}
           key={`${apropos.title}-${index}`}
+          customStyles={'custom-collapse-style-about'}
         />
       ))}
     </div>

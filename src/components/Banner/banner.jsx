@@ -49,18 +49,22 @@ function Banner() {
       ></img>
 
       {/* Flèche gauche du carrousel avec gestion du clic */}
-      <img
-        src={leftarrow}
-        className="banner__arrow banner__arrow--left"
-        onClick={handleArrowLeftClick}
-      />
+      {selectedApartment.pictures.length > 1 && (
+        <img
+          src={leftarrow}
+          className="banner__arrow banner__arrow--left"
+          onClick={handleArrowLeftClick}
+        />
+      )}
 
       {/* Flèche droite du carrousel avec gestion du clic */}
-      <img
-        src={rightarrow}
-        className="banner__arrow banner__arrow--right"
-        onClick={handleArrowRightClick}
-      />
+      {selectedApartment.pictures.length > 1 && (
+        <img
+          src={rightarrow}
+          className="banner__arrow banner__arrow--right"
+          onClick={handleArrowRightClick}
+        />
+      )}
 
       {/* Affichage de l'indicateur de position dans le carrousel */}
       {

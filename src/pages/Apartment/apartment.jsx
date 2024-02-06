@@ -12,7 +12,8 @@ function Apartment() {
   )
 
   if (!selectedApartment) {
-    return <div>No apartment found for the given id</div>
+    // Redirige vers la page d'erreur si aucun appartement n'est trouvé
+    return (window.location.href = '*')
   }
 
   return (
@@ -26,8 +27,16 @@ function Apartment() {
         rating={selectedApartment.rating}
       />
       <div className="apartment-details">
-        <Collapse title="Description" text={selectedApartment.description} />
-        <Collapse title="Équipements" text={selectedApartment.equipments} />
+        <Collapse
+          title="Description"
+          text={selectedApartment.description}
+          customStyles="custom-collapse-style-apartment"
+        />
+        <Collapse
+          title="Équipements"
+          text={selectedApartment.equipments}
+          customStyles="custom-collapse-style-apartment"
+        />
       </div>
     </div>
   )

@@ -4,7 +4,7 @@ import './_collapse.scss'
 import downArrow from '../../assets/downArrow.png'
 import upArrow from '../../assets/upArrow.png'
 
-function Collapse({ title, text }) {
+function Collapse({ title, text, customStyles }) {
   // Utilisation de l'état local pour suivre l'état ouvert/fermé du Collapse
   const [isClosed, setIsClosed] = useState(true)
 
@@ -47,7 +47,9 @@ function Collapse({ title, text }) {
   // Rendu du composant Collapse
   return (
     <div
-      className={`collapse ${isClosed ? 'collapse--closed' : 'collapse--open'}`}
+      className={`collapse ${
+        isClosed ? 'collapse--closed' : 'collapse--open'
+      } ${customStyles}`}
     >
       <div className="collapse__container">
         <h1 className="collapse__title">{title}</h1>
@@ -70,6 +72,7 @@ Collapse.propTypes = {
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
   ]).isRequired,
+  customStyles: PropTypes.string,
 }
 
 export default Collapse
