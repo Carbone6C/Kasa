@@ -67,11 +67,11 @@ function Banner() {
       )}
 
       {/* Affichage de l'indicateur de position dans le carrousel */}
-      {
+      {selectedApartment.pictures.length > 1 && (
         <div className="banner__indicator">{`${pos + 1}/${
           selectedApartment.pictures.length
         }`}</div>
-      }
+      )}
     </div>
   )
 }
