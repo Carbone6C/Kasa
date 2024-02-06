@@ -5,14 +5,18 @@ import downArrow from '../../assets/downArrow.png'
 import upArrow from '../../assets/upArrow.png'
 
 function Collapse({ title, text }) {
+  // Utilisation de l'état local pour suivre l'état ouvert/fermé du Collapse
   const [isClosed, setIsClosed] = useState(true)
 
+  // Fonction de gestion du basculement entre ouvert et fermé
   const handleToggle = () => {
     setIsClosed(!isClosed)
   }
 
+  // Fonction pour rendre le texte en fonction de son type (string ou array)
   const renderText = () => {
     if (Array.isArray(text)) {
+      // Si le texte est un tableau, affiche une liste
       return (
         <ul
           className={`collapse__list ${
@@ -27,6 +31,7 @@ function Collapse({ title, text }) {
         </ul>
       )
     } else {
+      // Si le texte est une chaîne de caractères, affiche un paragraphe
       return (
         <p
           className={`collapse__text ${
@@ -39,6 +44,7 @@ function Collapse({ title, text }) {
     }
   }
 
+  // Rendu du composant Collapse
   return (
     <div
       className={`collapse ${isClosed ? 'collapse--closed' : 'collapse--open'}`}
@@ -57,6 +63,7 @@ function Collapse({ title, text }) {
   )
 }
 
+// Définition des propTypes attendus des propriétés
 Collapse.propTypes = {
   title: PropTypes.string.isRequired,
   text: PropTypes.oneOfType([

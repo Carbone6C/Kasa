@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import './_error.scss'
 
 function Error() {
+  // Rendu du composant Error
   return (
     <div className="error">
       <h1 className="error__404">404</h1>

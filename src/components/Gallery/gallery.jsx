@@ -3,6 +3,7 @@ import './_gallery.scss'
 import data from '../../data/data.json'
 
 function Gallery() {
+  // Rendu du composant Gallery
   return (
     <div className="gallery">
       {data.map((data, index) => (

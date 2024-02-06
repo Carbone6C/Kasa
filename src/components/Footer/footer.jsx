@@ -2,6 +2,7 @@ import darkLogoKasa from '../../assets/dark-LOGO.png'
 import './_footer.scss'
 
 function Footer() {
+  // Rendu du composant Footer
   return (
     <footer className="footer">
       <img

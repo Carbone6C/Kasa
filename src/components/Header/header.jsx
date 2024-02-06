@@ -3,9 +3,12 @@ import logoKasa from '../../assets/LOGO.png'
 import './_header.scss'
 
 function Header() {
+  // Rendu du composant Header
   return (
     <header className="header">
-      <img className="header__logo" src={logoKasa} alt="image du logo Kasa" />
+      <Link to="/" className="header__logo-link">
+        <img className="header__logo" src={logoKasa} alt="image du logo Kasa" />
+      </Link>
       <nav className="header__navigation">
         <Link to="/" className="header__nav-link">
           Accueil

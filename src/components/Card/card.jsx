@@ -4,11 +4,14 @@ import filledStar from '../../assets/FilledStar.png'
 import emptyStar from '../../assets/EmptyStar.png'
 
 function Card({ title, location, tags, host, rating }) {
+  // Fonction pour générer les étoiles en fonction de la note
   const renderStars = () => {
     const ratingValue = parseInt(rating)
     const stars = []
 
+    // Boucle pour créer les étoiles
     for (let i = 0; i < 5; i++) {
+      // Vérifie si l'index est inférieur à la valeur de la note pour afficher une étoile remplie
       if (i < ratingValue) {
         stars.push(
           <img
@@ -19,6 +22,7 @@ function Card({ title, location, tags, host, rating }) {
           />
         )
       } else {
+        // Sinon, affiche une étoile vide
         stars.push(
           <img
             key={i}
@@ -33,6 +37,7 @@ function Card({ title, location, tags, host, rating }) {
     return stars
   }
 
+  // Rendu du composant Card
   return (
     <div className="card">
       <div className="card__content">
@@ -61,6 +66,7 @@ function Card({ title, location, tags, host, rating }) {
   )
 }
 
+// Définition des propTypes attendus des propriétés
 Card.propTypes = {
   title: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
