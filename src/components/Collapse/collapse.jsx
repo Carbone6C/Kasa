@@ -7,10 +7,18 @@ import upArrow from '../../assets/upArrow.png'
 function Collapse({ title, text }) {
   const [isClosed, setIsClosed] = useState(true)
 
+  const handleToggle = () => {
+    setIsClosed(!isClosed)
+  }
+
   const renderText = () => {
     if (Array.isArray(text)) {
       return (
-        <ul className="collapse__list">
+        <ul
+          className={`collapse__list ${
+            isClosed ? 'collapse--closed__list' : 'collapse--open__list'
+          }`}
+        >
           {text.map((item, index) => (
             <li key={index} className="collapse__list-item">
               {item}
@@ -19,31 +27,29 @@ function Collapse({ title, text }) {
         </ul>
       )
     } else {
-      return <p className="collapse__text">{text}</p>
+      return (
+        <p
+          className={`collapse__text ${
+            isClosed ? 'collapse--closed__text' : 'collapse--open__text'
+          }`}
+        >
+          {text}
+        </p>
+      )
     }
   }
 
-  return isClosed ? (
-    <div className="collapse collapse--closed">
+  return (
+    <div
+      className={`collapse ${isClosed ? 'collapse--closed' : 'collapse--open'}`}
+    >
       <div className="collapse__container">
         <h1 className="collapse__title">{title}</h1>
         <img
-          src={downArrow}
-          alt="Down Arrow"
+          src={isClosed ? downArrow : upArrow}
+          alt={isClosed ? 'Down Arrow' : 'Up Arrow'}
           className="collapse__toggle-button"
-          onClick={() => setIsClosed(false)}
-        />
-      </div>
-    </div>
-  ) : (
-    <div className="collapse">
-      <div className="collapse__container">
-        <h1 className="collapse__title">{title}</h1>
-        <img
-          src={upArrow}
-          alt="Up Arrow"
-          className="collapse__toggle-button"
-          onClick={() => setIsClosed(true)}
+          onClick={handleToggle}
         />
       </div>
       {renderText()}
