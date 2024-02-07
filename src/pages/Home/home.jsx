@@ -1,9 +1,10 @@
 import Gallery from '../../components/Gallery/gallery'
 import Layout from '../../components/Layout/layout'
+import './_home.scss'
 
 function Home() {
   return (
-    <div>
+    <div className="home">
       <Layout text="Chez vous, partout et ailleurs" />
       <Gallery />
     </div>
