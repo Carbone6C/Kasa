@@ -1,24 +1,41 @@
 import { useParams } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import rightarrow from '../../assets/right_arrow.png'
 import leftarrow from '../../assets/left_arrow.png'
 import './_banner.scss'
-import data from '../../data/data.json'
+import { getData } from '../../utilis/getData.js'
 
 function Banner() {
   // Extraction du paramètre 'id' de l'URL à l'aide de 'useParams'
   const { id } = useParams()
 
-  // Recherche de l'appartement correspondant dans les données
-  const selectedApartment = data.find(
-    (apartment) => apartment.id.toString() === id
-  )
+  // Initialisation de l'état local pour stocker les données de l'appartement sélectionné
+  const [selectedApartment, setSelectedApartment] = useState(null)
 
   // Initialisation de l'état pour la position actuelle dans le carrousel
   const [pos, setPos] = useState(0)
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getData()
+        const apartment = data.find(
+          (apartment) => apartment.id.toString() === id
+        )
+        setSelectedApartment(apartment)
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    }
+
+    fetchData()
+  }, [id])
+
+  if (!selectedApartment) {
+    return null
+  }
   // Fonction pour mettre à jour la position du carrousel
-  const updateCarrousel = (position) => {
+  const updateCarousel = (position) => {
     setPos(position)
   }
 
@@ -26,14 +43,14 @@ function Banner() {
   const handleArrowLeftClick = () => {
     const newPosition =
       pos === 0 ? selectedApartment.pictures.length - 1 : pos - 1
-    updateCarrousel(newPosition)
+    updateCarousel(newPosition)
   }
 
-  // Gestion du clic sur la flèche droite du carrousel
+  // Gestion du clic sur la flèche gauche du carrousel
   const handleArrowRightClick = () => {
     const newPosition =
       pos === selectedApartment.pictures.length - 1 ? 0 : pos + 1
-    updateCarrousel(newPosition)
+    updateCarousel(newPosition)
   }
 
   // Rendu du composant Banner

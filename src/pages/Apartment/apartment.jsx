@@ -1,19 +1,40 @@
 import { useParams } from 'react-router-dom'
 import Banner from '../../components/Banner/Banner'
 import Card from '../../components/Card/card'
-import data from '../../data/data.json'
 import Collapse from '../../components/Collapse/collapse'
 import './_apartment.scss'
+import { getData } from '../../utilis/getData.js'
+import { useEffect, useState } from 'react'
 
 function Apartment() {
   const { id } = useParams()
-  const selectedApartment = data.find(
+  const [apartmentData, setApartmentData] = useState(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getData()
+        setApartmentData(data)
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    }
+
+    fetchData()
+  }, [])
+
+  if (!apartmentData) {
+    return null
+  }
+
+  const selectedApartment = apartmentData.find(
     (apartment) => apartment.id.toString() === id
   )
 
+  // Redirige vers la page d'erreur si aucun appartement n'est trouvé
   if (!selectedApartment) {
-    // Redirige vers la page d'erreur si aucun appartement n'est trouvé
-    return (window.location.href = '*')
+    window.location.href = '*'
+    return null
   }
 
   return (
