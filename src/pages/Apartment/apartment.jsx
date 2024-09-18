@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import Banner from '../../components/Banner/Banner'
+import Banner from '../../components/Banner/Banner.jsx'
 import Card from '../../components/Card/card'
 import Collapse from '../../components/Collapse/collapse'
 import './_apartment.scss'
